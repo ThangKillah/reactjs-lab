@@ -12,6 +12,7 @@ function TodoFeature(props) {
   ];
 
   const [todoList, setTodoList] = useState(todoListInit);
+  const [filter, setFilter] = useState("all");
 
   const toggleTodo = (id) => {
     const newTodoList = [...todoList];
@@ -20,9 +21,17 @@ function TodoFeature(props) {
     setTodoList(newTodoList);
   };
 
+  const filterTodoList = todoList.filter(
+    (todo) => filter === "all" || todo.status === filter
+  );
+
   return (
     <div>
-      <TodoList todoList={todoList} onClickTodo={toggleTodo} />
+      <TodoList todoList={filterTodoList} onClickTodo={toggleTodo} />
+      <br />
+      <button onClick={() => setFilter("all")}>Show All</button>
+      <button onClick={() => setFilter("completed")}>Show Completed</button>
+      <button onClick={() => setFilter("new")}>Show New</button>
     </div>
   );
 }
