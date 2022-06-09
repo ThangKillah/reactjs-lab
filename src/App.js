@@ -13,6 +13,7 @@ function App() {
         </p>
         <Routes>
           <Route path="/todos" element={<TodoFeature />} />
+          <Route path="/todos" element={<TodoFeature />} />
         </Routes>
         <Link className="App-link" to="/todos">
           Todos
