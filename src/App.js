@@ -1,7 +1,12 @@
-import { Route, Routes, Link, Navigate } from "react-router-dom";
+import { Route, Routes, Link, Navigate, useParams } from "react-router-dom";
 import "./App.scss";
 import TodoFeature from "./features/Todo";
 import logo from "./logo.svg";
+
+function BlogPost() {
+  let { slug } = useParams();
+  return <div>Now showing post {slug}</div>;
+}
 
 function App() {
   return (
@@ -16,6 +21,7 @@ function App() {
           <Route path="/" element={<TodoFeature />} />
           <Route path="/todos" element={<TodoFeature />} />
           <Route path="/todos" element={<TodoFeature />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
         <Link className="App-link" to="/todos">
           Todos
