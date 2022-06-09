@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, Navigate } from "react-router-dom";
 import "./App.scss";
 import TodoFeature from "./features/Todo";
 import logo from "./logo.svg";
@@ -12,6 +12,8 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <Routes>
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/" element={<TodoFeature />} />
           <Route path="/todos" element={<TodoFeature />} />
           <Route path="/todos" element={<TodoFeature />} />
         </Routes>
