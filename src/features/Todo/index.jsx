@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoList from "./components/TodoList";
 
 TodoFeature.propTypes = {};
@@ -24,6 +24,14 @@ function TodoFeature(props) {
   const filterTodoList = todoList.filter(
     (todo) => filter === "all" || todo.status === filter
   );
+
+  useEffect(() => {
+    console.log("this is effect");
+    return () => {
+      console.log("clean effect");
+      // Execute before the next effect or unmount.
+    };
+  }, [filter]);
 
   return (
     <div>
