@@ -1,6 +1,7 @@
-import logo from "./logo.svg";
+import { Route, Routes, Link } from "react-router-dom";
 import "./App.scss";
 import TodoFeature from "./features/Todo";
+import logo from "./logo.svg";
 
 function App() {
   return (
@@ -10,15 +11,12 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <TodoFeature />
+        <Routes>
+          <Route path="/todos" element={<TodoFeature />} />
+        </Routes>
+        <Link className="App-link" to="/todos">
+          Todos
+        </Link>
       </header>
     </div>
   );
