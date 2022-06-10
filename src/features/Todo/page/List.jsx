@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import TodoList from "../components/TodoList";
 
 TodoFeatureList.propTypes = {};
@@ -12,7 +13,16 @@ function TodoFeatureList(props) {
   ];
 
   const [todoList, setTodoList] = useState(todoListInit);
-  const [filter, setFilter] = useState("all");
+  const [params, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState(() => {
+    return params.get("status") || "all";
+  });
+
+  useEffect(() => {
+    setFilter(params.get("status") || "all");
+  }, [params]);
 
   const toggleTodo = (id) => {
     const newTodoList = [...todoList];
@@ -33,13 +43,21 @@ function TodoFeatureList(props) {
     };
   }, [filter]);
 
+  const updateFilter = (status) => {
+    params.set("status", status);
+    navigate({
+      pathname: location.pathname,
+      search: params.toString(),
+    });
+  };
+
   return (
     <div>
       <TodoList todoList={filterTodoList} onClickTodo={toggleTodo} />
       <br />
-      <button onClick={() => setFilter("all")}>Show All</button>
-      <button onClick={() => setFilter("completed")}>Show Completed</button>
-      <button onClick={() => setFilter("new")}>Show New</button>
+      <button onClick={() => updateFilter("all")}>Show All</button>
+      <button onClick={() => updateFilter("completed")}>Show Completed</button>
+      <button onClick={() => updateFilter("new")}>Show New</button>
     </div>
   );
 }
