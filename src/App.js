@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
+import productApi from './api/productApi';
 import './App.scss';
 import NotFound from './components/NotFound';
 import TodoFeature from './features/Todo';
@@ -16,6 +18,15 @@ function HomePage() {
 }
 
 function App() {
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await productApi.getAll();
+      console.log(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
