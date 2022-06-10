@@ -1,10 +1,10 @@
-import { Link, Navigate, Route, Routes, useParams } from "react-router-dom";
-import "./App.scss";
-import NotFound from "./components/NotFound";
-import TodoFeature from "./features/Todo";
-import TodoDetailPage from "./features/Todo/page/Detail";
-import TodoFeatureList from "./features/Todo/page/List";
-import logo from "./logo.svg";
+import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
+import './App.scss';
+import NotFound from './components/NotFound';
+import TodoFeature from './features/Todo';
+import TodoDetailPage from './features/Todo/page/Detail';
+import TodoFeatureList from './features/Todo/page/List';
+import logo from './logo.svg';
 
 function BlogPost() {
   let { slug } = useParams();
