@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
+import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
 
 TodoFeatureList.propTypes = {};
@@ -49,8 +50,20 @@ function TodoFeatureList(props) {
     });
   };
 
+  const handleSubmitFormTodo = (values) => {
+    console.log(values);
+    const newTodoList = [...todoList];
+    newTodoList.push({
+      id: new Date().getTime() + Math.random(),
+      title: values?.title,
+      status: 'new',
+    });
+    setTodoList(newTodoList);
+  };
+
   return (
     <div>
+      <TodoForm onSubmit={handleSubmitFormTodo} />
       <TodoList todoList={filterTodoList} onClickTodo={toggleTodo} />
       <br />
       <button onClick={() => updateFilter('all')}>Show All</button>
