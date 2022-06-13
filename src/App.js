@@ -4,8 +4,8 @@ import productApi from './api/productApi';
 import './App.scss';
 import NotFound from './components/NotFound';
 import TodoFeature from './features/Todo';
-import TodoDetailPage from './features/Todo/page/Detail';
-import TodoFeatureList from './features/Todo/page/List';
+import TodoDetailPage from './features/Todo/page/TodoDetail';
+import TodoFeatureList from './features/Todo/page/TodoList';
 import logo from './logo.svg';
 
 function BlogPost() {
