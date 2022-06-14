@@ -3,6 +3,7 @@ import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import productApi from './api/productApi';
 import './App.scss';
 import NotFound from './components/NotFound';
+import CounterFeature from './features/Counter';
 import TodoFeature from './features/Todo';
 import TodoDetailPage from './features/Todo/page/TodoDetail';
 import TodoFeatureList from './features/Todo/page/TodoList';
@@ -43,10 +44,14 @@ function App() {
           </Route>
           <Route path="todos" element={<TodoFeature />} />
           <Route path="blog/:slug" element={<BlogPost />} />
+          <Route path="counter" element={<CounterFeature />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Link className="App-link" to="/todos">
           Todos
+        </Link>
+        <Link className="App-link" to="/counter">
+          Counter
         </Link>
       </header>
     </div>
