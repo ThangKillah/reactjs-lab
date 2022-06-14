@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import productApi from 'api/productApi';
 import 'App.scss';
 import NotFound from 'components/NotFound';
@@ -8,6 +6,8 @@ import TodoFeature from 'features/Todo';
 import TodoDetailPage from 'features/Todo/page/TodoDetail';
 import TodoFeatureList from 'features/Todo/page/TodoList';
 import logo from 'logo.svg';
+import { useEffect } from 'react';
+import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 
 function BlogPost() {
   let { slug } = useParams();
